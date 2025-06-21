@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+chromadb = "*"
+langchain-openai = "*"
+langchain-community = "*"
+python-dotenv = "*"
+pypdf = "*"
+sentence-transformers = "*"
+langchain-chroma = "*"
+langchain-huggingface = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.13"
