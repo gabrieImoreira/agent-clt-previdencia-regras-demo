@@ -1,85 +1,106 @@
+# 🤖📚 Chat CLT com RAG & OpenAI(Embbedings e LLM) & LangChain
 
-# 🤖📚 Chatbot LLM com PDFs usando ChromaDB + LangChain + HuggingFace  
-### LLM Chatbot with PDFs using ChromaDB + LangChain + HuggingFace
-
-Este projeto demonstra como construir um chatbot baseado em arquivos PDF com busca por similaridade vetorial. Utiliza embeddings gerados com modelos da HuggingFace e banco vetorial local com ChromaDB.
-
-This project shows how to build a chatbot based on PDF files using vector similarity search. It uses HuggingFace embeddings and local vector storage with ChromaDB.
+Este projeto demonstra como construir um assistente jurídico especializado em CLT (Consolidação das Leis do Trabalho), baseado em arquivos PDF com busca vetorial usando ChromaDB, LangChain e OpenAI.
 
 ---
 
-## 🚀 Tecnologias | Technologies
+## 🚀 Tecnologias Utilizadas
 
 - Python
 - LangChain
+- OpenAI (GPT-4o e embeddings)
 - ChromaDB
-- HuggingFace Embeddings
-- PyPDFLoader
+- Streamlit
+- TinyDB
 
 ---
 
-## 🗂️ Estrutura do Projeto | Project Structure
+## 🗂️ Estrutura do Projeto
 
 ```
-📂 data/             # PDFs de entrada | Input PDFs
-📂 chroma_db/        # Banco vetorial persistente | Persistent vector DB
-📄 main.py           # Script principal | Main script
-📄 requirements.txt  # Dependências | Dependencies
+📂 data/               # PDFs da CLT e documentos jurídicos
+📂 chroma_db_openai/   # Banco vetorial persistente (ChromaDB)
+📄 rag_pipeline.py     # Pipeline RAG com recuperação e geração
+📄 app.py              # Interface de chat com Streamlit
+📄 requirements.txt    # Dependências do projeto
 ```
 
 ---
 
-## ▶️ Como usar | How to use
+## ▶️ Como Usar
 
-1. **Clone o repositório | Clone the repository:**
+1. **Clone o repositório:**
 
 ```bash
-git clone https://github.com/your-user/chatbot-pdf-chroma.git
-cd chatbot-pdf-chroma
+git clone https://github.com/gabrieImoreira/agent-clt-previdencia-regras-demo.git
+cd agent-clt-previdencia-regras-demo
 ```
 
-2. **Instale as dependências | Install dependencies:**
+2. **Instale as dependências:**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3. **Coloque os arquivos PDF na pasta `/data` | Add your PDF files to the `/data` folder.**
+3. **Adicione os PDFs na pasta `/data`:**
 
-4. **Execute o script | Run the script:**
+Copie os arquivos PDF com a legislação da CLT ou documentos jurídicos relacionados para a pasta `./data`.
+
+4. **Execute o app:**
 
 ```bash
-python main.py
+streamlit run app.py
 ```
 
 ---
 
-## ❓ Exemplo de Pergunta | Example Query
+## ❓ Exemplo de Pergunta
 
 ```text
-Query: "Quem tem direito à aposentadoria por invalidez?"
+"Quantos dias tenho direito de férias por ano?"
 ```
 
-O sistema buscará os 3 trechos mais relevantes com suas similaridades.
-
-The system will return the top 3 most relevant text chunks with similarity scores.
+O sistema irá recuperar os trechos relevantes dos documentos PDF da CLT e responder com base neles.
 
 ---
 
-## 📝 Notas | Notes
+## 🆚 Versões
 
-- O banco vetorial é salvo localmente em `chroma_db/`.  
-  Vector database is stored locally at `chroma_db/`.
+### v1
 
-- O modelo de embedding padrão é `"all-MiniLM-L6-v2"` da HuggingFace.  
-  Default embedding model is `"all-MiniLM-L6-v2"` from HuggingFace.
+- Usava embeddings da HuggingFace
+- Sem histórico de conversa
+- Integração simples via script `main.py`
+- Sem interface gráfica
 
-- Pontuações mais próximas de 1 indicam maior similaridade.  
-  Scores closer to 1 mean higher similarity.
+### v2 (Atual)
+
+- Uso de GPT-4o via LangChain para respostas
+- Armazenamento do histórico com TinyDB
+- Interface de chat com Streamlit
+- Prompt jurídico especializado com regras e restrições
+- Integração completa com RAG (retrieval + geração)
 
 ---
 
-## 📫 Contato | Contact
+## 💡 Funcionalidades
+
+- Busca vetorial usando ChromaDB
+- Histórico de conversa com armazenamento no TinyDB
+- Interface amigável com Streamlit
+- Geração de respostas jurídicas com base apenas nos documentos
+
+---
+
+## ⚠️ Observações
+
+- O assistente **não substitui um advogado**.
+- Ele responde **apenas com base nos documentos fornecidos**.
+- Perguntas fora do escopo da CLT são gentilmente recusadas.
+
+---
+
+## 📫 Contato
 
 Gabriel Moreira  
-[LinkedIn](https://www.linkedin.com/in/seu-perfil)  
+[LinkedIn](https://www.linkedin.com/in/ga-brielmoreira)
