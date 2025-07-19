@@ -12,6 +12,11 @@ pypdf = "*"
 sentence-transformers = "*"
 langchain-chroma = "*"
 langchain-huggingface = "*"
+langchain-core = "*"
+langgraph = "*"
+google-genai = "*"
+streamlit = "*"
+tinydb = "*"
 
 [dev-packages]
 
